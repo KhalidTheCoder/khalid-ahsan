@@ -23,7 +23,7 @@ export function PortfolioShell() {
         className="pointer-events-none fixed inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(55% 40% at 8% 0%, oklch(0.68 0.2 36 / 0.09), transparent 70%), radial-gradient(45% 38% at 96% 100%, oklch(0.91 0.21 121 / 0.07), transparent 70%)",
+            "radial-gradient(55% 40% at 8% 0%, oklch(0.68 0.2 36 / 0.09), transparent 70%)",
         }}
       />
 
