@@ -84,7 +84,7 @@ function MarqueeColumn({
   const animClass = direction === "up" ? "animate-marquee-up" : "animate-marquee-down";
 
   return (
-    <div className="flex w-[11rem] flex-col gap-3" style={{ animationDuration: duration }}>
+    <div className="flex w-full flex-col gap-3" style={{ animationDuration: duration }}>
       {/* Duplicate the list for seamless infinite loop. */}
       {[0, 1].map((copy) => (
         <div
@@ -95,10 +95,16 @@ function MarqueeColumn({
           {items.map((item) => (
             <div
               key={`${copy}-${item.label}`}
-              className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-elevated/70 px-3.5 py-2.5 backdrop-blur-sm transition-colors hover:border-white/[0.14]"
+              className="group flex w-full items-center justify-between gap-3 rounded-xl border border-white/[0.07] bg-gradient-to-r from-elevated/80 to-elevated/40 px-3.5 py-2.5 backdrop-blur-sm transition-all duration-300 hover:border-primary/25 hover:from-primary/[0.06] hover:to-elevated/60 hover:shadow-[0_0_16px_-4px_oklch(0.68_0.2_36_/_0.25)]"
             >
-              <item.icon className="h-5 w-5 shrink-0 text-muted-foreground" />
-              <span className="text-sm font-medium text-foreground/80">{item.label}</span>
+              <div className="flex items-center gap-3">
+                <item.icon className="h-5 w-5 shrink-0 text-muted-foreground transition-colors duration-300 group-hover:text-primary/80" />
+                <span className="text-sm font-medium text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
+                  {item.label}
+                </span>
+              </div>
+              {/* Accent indicator dot — pulses subtly */}
+              <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-primary/30 transition-colors duration-300 group-hover:bg-primary/70" />
             </div>
           ))}
         </div>
@@ -115,7 +121,7 @@ function MarqueeColumn({
  */
 export function TechMarquee() {
   return (
-    <div className="relative hidden h-full max-h-[22rem] overflow-hidden lg:flex lg:gap-5">
+    <div className="relative hidden h-full max-h-[22rem] w-full overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
       {/* Top + bottom fade masks so icons dissolve into the background */}
       <div
         aria-hidden

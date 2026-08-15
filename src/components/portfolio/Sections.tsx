@@ -60,7 +60,7 @@ export function PortfolioSections({
   registerRef: (id: string, el: HTMLElement | null) => void;
 }) {
   return (
-    <div className="flex flex-col gap-20 pb-[70vh] sm:gap-24">
+    <div className="flex flex-col gap-20 pb-16 sm:gap-24">
       {/* HOME — hero */}
       <section
         id="home"
@@ -68,10 +68,10 @@ export function PortfolioSections({
         aria-label="Introduction"
         className="pt-28"
       >
-        {/* Two-column hero: left = title/intro/stats, right = tech marquee */}
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[auto_auto] lg:gap-10">
-          {/* LEFT — title + intro + stats */}
-          <div>
+        {/* Two-column hero — mirrors bento-grid cols so marquee aligns with cards below */}
+        <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-6">
+          {/* LEFT — title + intro + stats — occupies same 3 cols as Design Engineering card */}
+          <div className="lg:col-span-3">
             <DisplayTitle top="Full Stack" bottom="Developer" />
             <p className="mt-7 max-w-[32rem] text-[0.98rem] leading-relaxed text-muted-foreground">
               {profile.intro}
@@ -92,8 +92,10 @@ export function PortfolioSections({
             </dl>
           </div>
 
-          {/* RIGHT — dual vertical marquee, height matched to left content */}
-          <TechMarquee />
+          {/* RIGHT — dual vertical marquee — occupies same 3 cols as React TypeScript card */}
+          <div className="lg:col-span-3">
+            <TechMarquee />
+          </div>
         </div>
 
         {/* bento grid — three cards in row 1, two in row 2, full-width fill */}
