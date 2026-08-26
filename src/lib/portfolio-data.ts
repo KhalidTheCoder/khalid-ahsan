@@ -31,7 +31,7 @@ export function pathToSection(pathname: string): SectionId {
 export const profile = {
   name: "Khalid Ahsan",
   role: "Full Stack Developer",
-  location: "Dhaka, Bangladesh — GMT+6",
+  location: "Dhaka, Bangladesh · GMT+6",
   intro:
     "I design and build fast, considered interfaces for teams that care about detail. Nine years of shipping product, from first sketch to production.",
   status: "Open for select projects — Q4 2026",

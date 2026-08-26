@@ -12,7 +12,7 @@ import { ArrowUpRight, Clock, Layers, LayoutTemplate, Quote, Sparkles } from "lu
 import type { ReactNode } from "react";
 import { BentoCard, CardLabel } from "./BentoCard";
 import { ProjectCard } from "./ProjectCard";
-import { TechMarquee } from "./TechMarquee";
+import { TechStackPanel } from "./TechStackPanel";
 
 /* Reference-style two-line display heading: solid line + ghosted line */
 function DisplayTitle({ top, bottom }: { top: string; bottom: string }) {
@@ -68,17 +68,17 @@ export function PortfolioSections({
         aria-label="Introduction"
         className="pt-28"
       >
-        {/* Two-column hero — mirrors bento-grid cols so marquee aligns with cards below */}
-        <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-6">
+        {/* Two-column hero — mirrors the bento grid and keeps both sides equal-height. */}
+        <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-6">
           {/* LEFT — title + intro + stats — occupies same 3 cols as Design Engineering card */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 lg:flex lg:h-full lg:flex-col">
             <DisplayTitle top="Full Stack" bottom="Developer" />
             <p className="mt-7 max-w-[32rem] text-[0.98rem] leading-relaxed text-muted-foreground">
               {profile.intro}
             </p>
 
             {/* statistics row — oversized figures, small uppercase labels */}
-            <dl className="mt-12 flex gap-10 sm:gap-16">
+            <dl className="mt-12 flex gap-10 sm:gap-16 lg:mt-auto lg:pt-12">
               {profile.stats.map((s) => (
                 <div key={s.label} className="min-w-0">
                   <dd className="font-display text-[3.5rem] font-bold leading-none tracking-[-0.04em] text-foreground sm:text-[4.5rem]">
@@ -92,9 +92,9 @@ export function PortfolioSections({
             </dl>
           </div>
 
-          {/* RIGHT — dual vertical marquee — occupies same 3 cols as React TypeScript card */}
-          <div className="lg:col-span-3">
-            <TechMarquee />
+          {/* RIGHT — asymmetric core-stack panel */}
+          <div className="h-full lg:col-span-3">
+            <TechStackPanel />
           </div>
         </div>
 

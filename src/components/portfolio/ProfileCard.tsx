@@ -1,101 +1,126 @@
 import { ArrowUpRight, Copy, Github, Linkedin, Twitter, MapPin } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import profileImg from "@/assets/profile.jpg";
 import { profile, socials } from "@/lib/portfolio-data";
 
 const socialIcons = [Github, Twitter, Linkedin, ArrowUpRight];
+const COPY_FEEDBACK_DURATION_MS = 1600;
+
+type CopyStatus = "idle" | "copied" | "error";
 
 export function ProfileCard() {
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
+  const copyResetTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (copyResetTimeout.current) clearTimeout(copyResetTimeout.current);
+    },
+    [],
+  );
 
   const copyEmail = async () => {
+    if (copyResetTimeout.current) clearTimeout(copyResetTimeout.current);
+
     try {
       await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
+      setCopyStatus("copied");
     } catch {
-      /* clipboard unavailable */
+      setCopyStatus("error");
     }
+
+    copyResetTimeout.current = setTimeout(() => setCopyStatus("idle"), COPY_FEEDBACK_DURATION_MS);
   };
 
+  const copyLabel =
+    copyStatus === "copied"
+      ? "Copied to clipboard"
+      : copyStatus === "error"
+        ? "Copy unavailable"
+        : profile.email;
+
   return (
-    <div className="rise relative w-full overflow-hidden rounded-[2rem] bg-ink px-5 pb-8 pt-4 text-ink-foreground shadow-panel sm:px-6 sm:pb-12 sm:pt-5">
+    <article className="rise relative w-full overflow-hidden rounded-[2rem] bg-profile p-4 text-profile-foreground shadow-panel sm:p-5">
       {/* portrait */}
-      <div className="relative overflow-hidden rounded-[1.4rem]">
-        <img
-          src={profileImg}
-          alt={`${profile.name}, ${profile.role}`}
-          width={912}
-          height={1104}
-          className="h-[15rem] w-full object-cover object-[50%_18%] xl:h-[17rem]"
+      <div className="relative mb-2 mr-2">
+        <div
+          aria-hidden
+          className="absolute inset-0 translate-x-2 translate-y-2 rounded-[1.4rem] bg-primary/80"
         />
-        <div className="absolute left-3 top-3 flex items-center gap-2 rounded-full bg-ink-foreground/85 px-2.5 py-1 backdrop-blur">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
-          </span>
-          <span className="text-[0.6rem] font-medium uppercase tracking-[0.16em] text-ink">
-            Available
-          </span>
+        <div className="relative overflow-hidden rounded-[1.4rem]">
+          <img
+            src={profileImg}
+            alt={`${profile.name}, ${profile.role}`}
+            width={912}
+            height={1104}
+            className="h-[15rem] w-full object-cover object-[50%_18%] xl:h-[17rem]"
+          />
+          <div className="absolute left-3 top-3 flex items-center gap-2 rounded-lg bg-accent px-2.5 py-1.5 text-accent-foreground shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span className="font-mono text-[0.58rem] font-medium uppercase tracking-[0.14em]">
+              Available
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* name + one-liner */}
-      <div className="mt-6 flex flex-col items-center text-center">
-        <h1 className="text-[1.85rem] font-bold leading-none tracking-[-0.03em] text-ink-foreground">
-          {profile.name}
-        </h1>
-        <p className="mt-2.5 text-[0.78rem] font-medium uppercase tracking-[0.14em] text-ink-foreground/50">
+      {/* editorial identity block */}
+      <div className="mt-7 text-left">
+        <p className="font-mono text-[0.67rem] font-medium uppercase tracking-[0.18em] text-profile-foreground/50">
           {profile.role}
         </p>
+        <h1 className="mt-2 text-[1.95rem] font-bold leading-none tracking-[-0.04em] text-profile-foreground">
+          {profile.name}
+        </h1>
       </div>
 
-      <p className="mx-auto mt-6 max-w-[16rem] text-center text-[0.8rem] leading-relaxed text-ink-foreground/60">
+      <p className="mt-5 text-left text-[0.78rem] leading-[1.7] text-profile-foreground/60">
         {profile.intro}
       </p>
 
-      <div className="mt-4 flex items-center justify-center gap-1.5 text-[0.68rem] text-ink-foreground/45">
-        <MapPin className="h-3 w-3 shrink-0" />
-        <span className="truncate">{profile.location}</span>
+      <div className="mt-5 flex min-w-0 items-center justify-between gap-2 border-b border-profile-foreground/10 pb-5">
+        <div className="flex min-w-0 items-center gap-1.5 text-[0.61rem] text-profile-foreground/50 xl:text-[0.66rem]">
+          <MapPin aria-hidden className="h-3.5 w-3.5 shrink-0" />
+          <span className="truncate">{profile.location}</span>
+        </div>
+
+        <ul className="flex shrink-0 items-center gap-1.5">
+          {socials.map((social, index) => {
+            const Icon = socialIcons[index] ?? ArrowUpRight;
+            return (
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="grid h-8 w-8 place-items-center rounded-full border border-accent/15 text-accent transition-colors hover:border-accent/35 hover:bg-primary/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-profile"
+                >
+                  <Icon aria-hidden className="h-3.5 w-3.5" strokeWidth={1.9} />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
-      {/* social icon row */}
-      <ul className="mt-6 flex items-center justify-center gap-3">
-        {socials.map((s, i) => {
-          const Icon = socialIcons[i] ?? ArrowUpRight;
-          return (
-            <li key={s.label}>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                className="grid h-8 w-8 place-items-center rounded-xl border border-ink-foreground/10 text-primary transition-colors hover:border-primary/40 hover:bg-primary/10"
-              >
-                <Icon className="h-4 w-4" strokeWidth={1.9} />
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className="mt-12 flex flex-col gap-2.5 border-t border-ink-foreground/10 pt-5">
+      <div className="mt-4 flex flex-col gap-2.5">
         <a
           href={`mailto:${profile.email}`}
-          className="flex items-center justify-center gap-2 rounded-full bg-ink-foreground px-5 py-3 text-[0.83rem] font-semibold text-ink transition-transform hover:scale-[1.015]"
+          className="flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-[0.83rem] font-semibold text-accent-foreground transition-[transform,background-color] hover:scale-[1.01] hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-profile"
         >
           Start a project
-          <ArrowUpRight className="h-4 w-4" />
+          <ArrowUpRight aria-hidden className="h-4 w-4" />
         </a>
         <button
           type="button"
           onClick={copyEmail}
-          className="flex items-center justify-center gap-2 rounded-full border border-ink-foreground/12 px-5 py-2.5 text-[0.72rem] font-medium text-ink-foreground/55 transition-colors hover:bg-ink-foreground/5"
+          className="flex items-center justify-center gap-2 rounded-xl border border-accent/25 px-5 py-2.5 text-[0.7rem] font-medium text-accent transition-colors hover:border-accent/40 hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-profile"
         >
-          <Copy className="h-3 w-3" />
-          {copied ? "Copied to clipboard" : profile.email}
+          <Copy aria-hidden className="h-3.5 w-3.5" />
+          <span aria-live="polite">{copyLabel}</span>
         </button>
       </div>
-    </div>
+    </article>
   );
 }

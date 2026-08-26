@@ -23,13 +23,13 @@ export function PortfolioShell() {
         className="pointer-events-none fixed inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(55% 40% at 8% 0%, oklch(0.68 0.2 36 / 0.09), transparent 70%)",
+            "radial-gradient(55% 40% at 8% 0%, color-mix(in srgb, var(--primary) 9%, transparent), transparent 70%)",
         }}
       />
 
       <div className="relative mx-auto flex w-full max-w-[1560px] flex-col gap-5 px-4 py-4 sm:px-6 lg:h-screen lg:flex-row lg:gap-10 lg:px-8 lg:py-6">
         {/* LEFT — stationary profile panel */}
-        <aside className="w-full shrink-0 lg:h-screen lg:w-[21.5rem] xl:w-[23.5rem] lg:flex lg:items-start lg:justify-center lg:pt-28">
+        <aside className="scroll-quiet w-full shrink-0 lg:flex lg:h-[calc(100vh-3rem)] lg:w-[21.5rem] lg:items-start lg:justify-center lg:overflow-y-auto lg:pt-28 xl:w-[23.5rem]">
           <ProfileCard />
         </aside>
 

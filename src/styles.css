@@ -13,10 +13,9 @@
   }
 }
 
-
 /*
  * Design system — reference-matched editorial developer portfolio.
- * Pure near-black canvas, white profile panel, orange primary + lime secondary accent.
+ * Pure near-black canvas, white profile panel, sand primary + brown secondary accent.
  */
 
 @theme inline {
@@ -49,6 +48,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-profile: var(--profile);
+  --color-profile-foreground: var(--profile-foreground);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-ghost: var(--ghost);
@@ -60,10 +61,15 @@
 
   --shadow-panel: 0 30px 70px -35px oklch(0 0 0 / 0.8);
   --shadow-lift: 0 20px 44px -22px oklch(0 0 0 / 0.65);
+  --shadow-primary-glow: 0 0 16px -4px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 :root {
   --radius: 1.5rem;
+
+  /* Brand palette — change these two values to re-theme every accent. */
+  --brand-primary: #eacea9;
+  --brand-secondary: #85441e;
 
   /* reference canvas: #0d0d0d */
   --background: oklch(0.15 0 0);
@@ -78,9 +84,8 @@
   --popover: oklch(0.185 0 0);
   --popover-foreground: oklch(0.98 0 0);
 
-  /* reference primary: warm orange #ff5c33 */
-  --primary: oklch(0.68 0.2 36);
-  --primary-foreground: oklch(0.99 0 0);
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--brand-secondary);
 
   --secondary: oklch(0.24 0 0);
   --secondary-foreground: oklch(0.97 0 0);
@@ -88,9 +93,12 @@
   --muted: oklch(0.24 0 0);
   --muted-foreground: oklch(0.68 0 0);
 
-  /* reference secondary accent: lime #c8f531 */
-  --accent: oklch(0.91 0.21 121);
-  --accent-foreground: oklch(0.2 0.04 130);
+  --accent: var(--brand-secondary);
+  --accent-foreground: var(--brand-primary);
+
+  /* Warm profile surface derived from the brand palette. */
+  --profile: color-mix(in srgb, var(--ink) 94%, var(--brand-primary));
+  --profile-foreground: var(--ink-foreground);
 
   /* white profile panel */
   --ink: oklch(1 0 0);
@@ -104,7 +112,7 @@
 
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.68 0.2 36 / 55%);
+  --ring: var(--brand-primary);
 }
 
 @layer base {
@@ -211,23 +219,6 @@
 
 @utility drift {
   animation: drift 7s ease-in-out infinite;
-}
-
-/* vertical marquee — infinite seamless scroll */
-@keyframes marquee-up {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-100%); }
-}
-@keyframes marquee-down {
-  from { transform: translateY(-100%); }
-  to   { transform: translateY(0); }
-}
-
-@utility animate-marquee-up {
-  animation: marquee-up linear infinite;
-}
-@utility animate-marquee-down {
-  animation: marquee-down linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
