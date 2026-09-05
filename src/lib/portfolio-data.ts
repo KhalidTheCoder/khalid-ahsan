@@ -47,7 +47,11 @@ export const socials = [
     handle: "github.com/KhalidTheCoder",
     href: "https://github.com/KhalidTheCoder",
   },
-  { label: "CV", handle: "Experience and résumé", href: "/experience" },
+  {
+    label: "CV",
+    handle: "View résumé",
+    href: "https://drive.google.com/file/d/1_w34nJDpIh9XrpnFJtO428qmzSiWzW0j/view?usp=sharing",
+  },
   {
     label: "LinkedIn",
     handle: "linkedin.com/in/khalid24",

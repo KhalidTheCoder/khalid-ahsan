@@ -1,18 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="canvas" x1="8" y1="4" x2="58" y2="62" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#24211d"/>
-      <stop offset="1" stop-color="#0d0d0d"/>
-    </linearGradient>
-    <linearGradient id="warm" x1="36" y1="17" x2="56" y2="49" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#a95b2c"/>
-      <stop offset="1" stop-color="#6f3518"/>
-    </linearGradient>
-  </defs>
-
-  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#canvas)" stroke="#eacea9" stroke-width="2.5"/>
-  <circle cx="47" cy="33" r="16" fill="url(#warm)"/>
-  <path d="M10 16h7v12l10-12h8L23 30l13 18h-8L17 34v14h-7V16Z" fill="#f7f3ed"/>
-  <path d="m34 48 9-32h7l9 32h-7l-2-8h-9l-2 8h-5Zm9-14h6l-3-11-3 11Z" fill="#eacea9"/>
-  <circle cx="53" cy="11" r="3" fill="#eacea9"/>
+  <rect width="64" height="64" rx="16" fill="#0d0d0d"/>
+  <text
+    x="29"
+    y="52"
+    fill="#fff"
+    font-family="Didot, 'Bodoni 72', Georgia, 'Times New Roman', serif"
+    font-size="58"
+    font-style="italic"
+    font-weight="700"
+    text-anchor="middle"
+  >K</text>
 </svg>
