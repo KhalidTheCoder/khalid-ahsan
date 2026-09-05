@@ -1,9 +1,9 @@
-import { ArrowUpRight, Copy, Github, Linkedin, Twitter, MapPin } from "lucide-react";
+import { ArrowUpRight, Copy, FileText, Github, Linkedin, MapPin } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import profileImg from "@/assets/profile.jpg";
 import { profile, socials } from "@/lib/portfolio-data";
 
-const socialIcons = [Github, Twitter, Linkedin, ArrowUpRight];
+const socialIcons = [Github, FileText, Linkedin];
 const COPY_FEEDBACK_DURATION_MS = 1600;
 
 type CopyStatus = "idle" | "copied" | "error";
@@ -53,7 +53,7 @@ export function ProfileCard() {
             alt={`${profile.name}, ${profile.role}`}
             width={912}
             height={1104}
-            className="h-[15rem] w-full object-cover object-[50%_18%] xl:h-[17rem]"
+            className="h-[15rem] w-full object-cover object-[50%_18%] md:h-[17rem]"
           />
           <div className="absolute left-3 top-3 flex items-center gap-2 rounded-lg bg-accent px-2.5 py-1.5 text-accent-foreground shadow-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -79,7 +79,7 @@ export function ProfileCard() {
       </p>
 
       <div className="mt-5 flex min-w-0 items-center justify-between gap-2 border-b border-profile-foreground/10 pb-5">
-        <div className="flex min-w-0 items-center gap-1.5 text-[0.61rem] text-profile-foreground/50 xl:text-[0.66rem]">
+        <div className="flex min-w-0 items-center gap-1.5 text-[0.66rem] text-profile-foreground/50">
           <MapPin aria-hidden className="h-3.5 w-3.5 shrink-0" />
           <span className="truncate">{profile.location}</span>
         </div>
@@ -87,12 +87,13 @@ export function ProfileCard() {
         <ul className="flex shrink-0 items-center gap-1.5">
           {socials.map((social, index) => {
             const Icon = socialIcons[index] ?? ArrowUpRight;
+            const isExternal = social.href.startsWith("http");
             return (
               <li key={social.label}>
                 <a
                   href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
                   aria-label={social.label}
                   className="grid h-8 w-8 place-items-center rounded-full border border-accent/15 text-accent transition-colors hover:border-accent/35 hover:bg-primary/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-profile"
                 >

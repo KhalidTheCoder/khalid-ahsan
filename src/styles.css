@@ -5,11 +5,24 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Lock window scroll on desktop — only the right panel scrolls independently */
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   html,
   body {
     overflow: hidden;
     height: 100%;
+  }
+}
+
+/*
+ * Preserve the full desktop composition on tablets, then scale it as one canvas.
+ * This keeps card ratios, line breaks, typography, and spacing identical instead
+ * of allowing individual components to become taller as the viewport narrows.
+ */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .portfolio-stage {
+    width: 1440px;
+    max-width: none;
+    zoom: calc((100vw - 32px) / 1440px);
   }
 }
 

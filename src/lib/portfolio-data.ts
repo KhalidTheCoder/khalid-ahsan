@@ -1,7 +1,3 @@
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-
 export const SECTION_IDS = [
   "home",
   "about",
@@ -33,121 +29,141 @@ export const profile = {
   role: "Full Stack Developer",
   location: "Dhaka, Bangladesh · GMT+6",
   intro:
-    "I design and build fast, considered interfaces for teams that care about detail. Nine years of shipping product, from first sketch to production.",
-  status: "Open for select projects — Q4 2026",
-  email: "hello@khalidahsan.dev",
+    "Software developer specializing in modern SaaS platforms and robust web applications. I deliver end-to-end solutions, bridging scalable backend logic with seamless user experiences.",
+  heroDescription:
+    "I architect and build modern SaaS products and high-performance web applications. With over two years of experience delivering complete systems, I take client products from initial concept through robust backend deployment to the final user interface.",
+  status: "Open to full-time opportunities",
+  email: "khalidahsan2407@gmail.com",
   stats: [
-    { value: "+9", label: "Years of\nExperience" },
-    { value: "+48", label: "Projects\nCompleted" },
-    { value: "+12", label: "Worldwide\nClients" },
+    { value: "2+", label: "Years of\nExperience" },
+    { value: "15+", label: "Projects\nCompleted" },
+    { value: "9+", label: "Worldwide\nClients" },
   ],
 };
 
 export const socials = [
-  { label: "GitHub", handle: "github.com/khalidahsan", href: "https://github.com" },
-  { label: "X", handle: "@khalidbuilds", href: "https://x.com" },
-  { label: "LinkedIn", handle: "in/khalidahsan", href: "https://linkedin.com" },
-  { label: "Read.cv", handle: "read.cv/khalid", href: "https://read.cv" },
+  {
+    label: "GitHub",
+    handle: "github.com/KhalidTheCoder",
+    href: "https://github.com/KhalidTheCoder",
+  },
+  { label: "CV", handle: "Experience and résumé", href: "/experience" },
+  {
+    label: "LinkedIn",
+    handle: "linkedin.com/in/khalid24",
+    href: "https://www.linkedin.com/in/khalid24/",
+  },
+];
+
+export const experienceMetrics = [
+  { value: "2+", label: "Years experience" },
+  { value: "13+", label: "Projects shipped" },
+  { value: "12", label: "Member team led" },
 ];
 
 export const experience = [
   {
-    company: "Northlight Systems",
-    role: "Staff Product Engineer",
-    period: "2023 — Present",
-    summary: "Own the design system and the editor surface used by 40k daily operators.",
+    company: "FB International BD",
+    role: "Team Lead & Full Stack Developer",
+    period: "2025 — 2026",
+    featured: true,
+    tags: ["Leadership", "Full-stack"],
+    highlights: [
+      "Promoted to Team Lead within 2 months",
+      "Led a cross-functional team of 12 developers and designers",
+      "Delivered 13+ full-stack applications across 5 global markets",
+    ],
   },
   {
-    company: "Fathom Labs",
-    role: "Senior Frontend Engineer",
-    period: "2020 — 2023",
-    summary: "Rebuilt the analytics client; cut time-to-interactive from 4.1s to 900ms.",
-  },
-  {
-    company: "Studio Kern",
-    role: "Interface Designer / Developer",
-    period: "2017 — 2020",
-    summary: "Design-engineering for editorial and commerce clients across 20+ launches.",
+    company: "Independent Developer",
+    role: "Full Stack Developer",
+    period: "2024 — 2025",
+    featured: false,
+    tags: ["Independent", "Product delivery"],
+    highlights: [
+      "Built and deployed end-to-end web applications",
+      "Delivered SaaS, commerce, and real-estate MVPs",
+      "Owned database, API, and frontend implementation",
+    ],
   },
 ];
 
 export const skills = [
   "TypeScript",
   "React",
-  "TanStack",
-  "Node",
-  "Postgres",
+  "Next.js",
+  "Node.js",
+  "NestJS",
+  "PostgreSQL",
+  "MongoDB",
+  "Redis",
   "Tailwind",
-  "Motion",
-  "Figma",
-  "WebGL",
-  "Rust",
+  "Git",
 ];
 
 export const projects = [
   {
-    name: "Meridian",
-    category: "Analytics platform",
-    year: "2026",
+    name: "Cresify",
+    category: "Client project · Shipped",
     description:
-      "A realtime metrics workspace with a keyboard-first query builder and shareable boards.",
-    tech: ["TypeScript", "TanStack", "ClickHouse"],
-    image: project1,
-    live: "https://example.com",
-    repo: "https://github.com",
+      "A production marketplace connecting customers with trusted services and businesses through a modern digital experience.",
+    tech: ["Next.js"],
+    image: "/cresify.png",
+    live: "https://cresify.com/",
     featured: true,
   },
   {
-    name: "Halo Field",
-    category: "Mobile product",
-    year: "2025",
-    description: "Offline-first field reporting for climate researchers.",
-    tech: ["React Native", "SQLite"],
-    image: project2,
-    live: "https://example.com",
-    repo: "https://github.com",
+    name: "Bright Horizons",
+    category: "Client project · In development",
+    description:
+      "A family-focused development platform delivering personalized weekly activities, expert guidance, and resources for parents.",
+    tech: ["Next.js"],
+    image: "/bright-horizons.png",
+    live: "https://bright-horizons-collective.vercel.app/",
     featured: false,
   },
   {
-    name: "Lattice",
-    category: "Open source",
-    year: "2025",
-    description: "A tiny graph layout engine for dependency visualisation.",
-    tech: ["Rust", "WASM"],
-    image: project3,
-    live: "https://example.com",
-    repo: "https://github.com",
+    name: "Facep",
+    category: "Client project · In development",
+    description:
+      "An e-commerce platform focused on product discovery, category browsing, deals, and a seamless shopping experience.",
+    tech: ["Next.js"],
+    image: "/facep-ecommerce.png",
+    live: "https://facep-ecommerce-frontend.vercel.app/",
     featured: false,
   },
 ];
 
 export const services = [
   {
-    title: "Product design engineering",
+    title: "End-to-End Product Engineering",
     description:
-      "End-to-end: interface design, front-end architecture, shipped in weeks not quarters.",
+      "Architecting and building scalable web applications from the database schema to the final responsive UI, ensuring robust performance across the stack.",
   },
   {
-    title: "Design systems",
-    description: "Token architecture, component libraries, documentation your team actually uses.",
+    title: "Frontend Architecture",
+    description:
+      "Developing maintainable, high-performance user interfaces using React, Next.js, and TypeScript that scale seamlessly as the product grows.",
   },
   {
-    title: "Performance rescue",
-    description: "Audits and hands-on work to make a slow app feel instant again.",
+    title: "Technical Leadership",
+    description:
+      "Bridging the gap between product requirements and technical execution, enforcing code quality, and driving cross-functional team delivery.",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Khalid rebuilt our core surface in six weeks and it still feels like the fastest tool we own.",
-    author: "Rina Oyelaran",
-    title: "VP Product, Northlight",
+      "Khalid took full ownership of our product's architecture and delivered a highly scalable platform that exceeded our expectations.",
+    author: "Private client",
+    title: "Product engineering engagement",
   },
   {
-    quote: "Rare combination: designs with taste, ships with discipline.",
-    author: "Tomas Vidal",
-    title: "Founder, Fathom Labs",
+    quote:
+      "A rare developer who writes exceptionally clean code, bridges the gap between backend and design, and effectively leads cross-functional teams.",
+    author: "Team feedback",
+    title: "FB International BD",
   },
 ];
 

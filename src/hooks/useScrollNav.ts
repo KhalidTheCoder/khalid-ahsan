@@ -41,8 +41,8 @@ export function useScrollNav(pathname: string) {
 
     if (containerScrolls && container) {
       const delta = el.getBoundingClientRect().top - container.getBoundingClientRect().top;
-      // Align the section exactly at the top of the container
-      const top = Math.max(container.scrollTop + delta, 0);
+      // Keep routed section headings clear of the floating navigation dock.
+      const top = Math.max(container.scrollTop + delta - offset, 0);
       container.scrollTo({ top, behavior });
     } else {
       const scroller = document.scrollingElement ?? document.documentElement;

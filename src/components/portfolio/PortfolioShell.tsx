@@ -16,7 +16,7 @@ export function PortfolioShell() {
   const { active, registerRef, scrollToSection, scrollRef } = useScrollNav(pathname);
 
   return (
-    <div className="min-h-screen bg-background lg:h-screen lg:overflow-hidden">
+    <div className="min-h-screen overflow-x-clip bg-background xl:h-screen xl:overflow-hidden">
       {/* ambient background wash */}
       <div
         aria-hidden
@@ -27,21 +27,21 @@ export function PortfolioShell() {
         }}
       />
 
-      <div className="relative mx-auto flex w-full max-w-[1560px] flex-col gap-5 px-4 py-4 sm:px-6 lg:h-screen lg:flex-row lg:gap-10 lg:px-8 lg:py-6">
+      <div className="portfolio-stage relative mx-auto flex w-full max-w-[1560px] flex-col gap-5 px-4 py-4 sm:px-6 md:flex-row md:items-start md:gap-10 md:px-8 md:py-6 xl:h-screen">
         {/* LEFT — stationary profile panel */}
-        <aside className="scroll-quiet w-full shrink-0 lg:flex lg:h-[calc(100vh-3rem)] lg:w-[21.5rem] lg:items-start lg:justify-center lg:overflow-y-auto lg:pt-28 xl:w-[23.5rem]">
+        <aside className="scroll-quiet w-full shrink-0 md:sticky md:top-6 md:flex md:w-[23.5rem] md:self-start md:items-start md:justify-center md:pt-28 xl:static xl:h-[calc(100vh-3rem)] xl:overflow-y-auto">
           <ProfileCard />
         </aside>
 
         {/* floating icon dock */}
-        <div className="pointer-events-none sticky top-3 z-40 flex justify-center lg:absolute lg:left-[calc(50%+11rem)] lg:top-6 lg:-translate-x-1/2">
+        <div className="pointer-events-none sticky top-3 z-40 flex justify-center md:fixed md:left-[calc(50%+11rem)] md:top-6 md:-translate-x-1/2 xl:absolute">
           <FloatingNav active={active} onSelect={scrollToSection} />
         </div>
 
         {/* RIGHT — independent scroll viewport */}
         <main
           ref={scrollRef}
-          className="scroll-quiet min-w-0 flex-1 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto"
+          className="scroll-quiet min-w-0 flex-1 [container-type:inline-size] xl:h-[calc(100vh-3rem)] xl:overflow-y-auto"
         >
           <PortfolioSections registerRef={registerRef} />
         </main>

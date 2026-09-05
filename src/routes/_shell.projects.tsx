@@ -7,13 +7,13 @@ export const Route = createFileRoute("/_shell/projects")({
       {
         name: "description",
         content:
-          "Selected work: Meridian analytics, Halo Field mobile research app, and the Lattice layout engine.",
+          "Selected client work: Cresify, Bright Horizons, and Facep across marketplace, family technology, and e-commerce.",
       },
       { property: "og:title", content: "Projects — Khalid Ahsan" },
       {
         property: "og:description",
         content:
-          "Selected work: Meridian analytics, Halo Field mobile research app, and the Lattice layout engine.",
+          "Selected client work: Cresify, Bright Horizons, and Facep across marketplace, family technology, and e-commerce.",
       },
     ],
   }),
