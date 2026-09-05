@@ -110,7 +110,7 @@ export const projects = [
     name: "Cresify",
     category: "Client project · Shipped",
     description:
-      "A production marketplace connecting customers with trusted services and businesses through a modern digital experience.",
+      "A production-grade multi-vendor marketplace engineered to connect customers, sellers, and service providers through a scalable commerce experience.",
     tech: ["Next.js"],
     image: "/cresify.png",
     live: "https://cresify.com/",
@@ -120,7 +120,7 @@ export const projects = [
     name: "Bright Horizons",
     category: "Client project · In development",
     description:
-      "A family-focused development platform delivering personalized weekly activities, expert guidance, and resources for parents.",
+      "A personalized development platform engineered to deliver weekly plans, therapist-designed activities, and guided experiences for growing families.",
     tech: ["Next.js"],
     image: "/bright-horizons.png",
     live: "https://bright-horizons-collective.vercel.app/",
@@ -130,7 +130,7 @@ export const projects = [
     name: "Facep",
     category: "Client project · In development",
     description:
-      "An e-commerce platform focused on product discovery, category browsing, deals, and a seamless shopping experience.",
+      "A scalable e-commerce platform engineered for product discovery, category browsing, personalized recommendations, deals, and seamless shopping.",
     tech: ["Next.js"],
     image: "/facep-ecommerce.png",
     live: "https://facep-ecommerce-frontend.vercel.app/",
